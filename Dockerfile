@@ -1,13 +1,11 @@
-FROM wallies/python-cuda:3.10-cuda11.6-runtime
+FROM pytorch/pytorch:1.12.1-cuda11.3-cudnn8-runtime
 
 WORKDIR /
-RUN pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116
 
 # Install git
-RUN apt-get update && apt-get install -y git build-essential
+RUN apt-get update && apt-get install -y git
 
 # Install Python packages
-RUN pip3 install --upgrade pip
 ADD requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
@@ -29,4 +27,5 @@ RUN python3 download.py
 ADD app.py .
 
 # Start server
+# RUN echo "Successfully built Docker image"
 CMD python3 -u server.py
