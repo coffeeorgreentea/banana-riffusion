@@ -7,7 +7,7 @@ from riffusion.riffusion_pipeline import RiffusionPipeline
 
 
 def download_model():
-    repo_id = "riffusion/riffusion-model-v1"
+    repo_id = "spaceinvader/fart"
     model = RiffusionPipeline.from_pretrained(repo_id, revision="main", torch_dtype=torch.float16, safety_checker=None)
 
     unet_file = hf_hub_download("riffusion/riffusion-model-v1", filename="unet_traced.pt", subfolder="unet_traced") 
